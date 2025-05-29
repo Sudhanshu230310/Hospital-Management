@@ -6,7 +6,7 @@ export const CreateReport = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.CREATE_REPORT_REQUEST });
     const res = await axios.post(
-      "http://localhost:5000/reports/create",
+      "http://localhost:5001/reports/create",
       data
     );
     console.log(res);
@@ -32,7 +32,7 @@ export const GetDoctorDetails = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_DOCTOR_REQUEST });
     const res = await axios.get(
-      "http://localhost:5000/doctors"
+      "http://localhost:5001/doctors"
     );
     console.log(res);
     // dispatch({
@@ -56,7 +56,7 @@ export const AddPatients = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.ADD_PATIENT_REQUEST });
     const res = await axios.post(
-      "http://localhost:5000/patients/register",
+      "http://localhost:5001/patients/register",
       data
     );
     console.log("response",data)
@@ -82,7 +82,7 @@ export const CreateBeds = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.ADD_BED_REQUEST });
     const res = await axios.post(
-      "http://localhost:5000/beds/add",
+      "http://localhost:5001/beds/add",
       data
     );
     return res.data;
@@ -107,7 +107,7 @@ export const CreatePayment = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.CREATE_PAYMENT_REQUEST });
     const res = await axios.post(
-      "http://localhost:5000/payments/add",
+      "http://localhost:5001/payments/add",
       data
     );
     console.log(res.data);
@@ -131,7 +131,7 @@ export const CreatePayment = (data) => async (dispatch) => {
 export const GetBeds = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_BED_REQUEST });
-    const res = await axios.get("http://localhost:5000/beds");
+    const res = await axios.get("http://localhost:5001/beds");
     console.log(res);
     dispatch({
       type: types.GET_BED_SUCCESS,
@@ -152,7 +152,7 @@ export const CreateBooking = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.CREATE_BOOKING_REQUEST });
     const res = await axios.post(
-      `http://localhost:5000/appointments/create`,
+      `http://localhost:5001/appointments/create`,
       data
     );
     console.log(res);
@@ -167,7 +167,7 @@ export const AddBed = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.ADD_BEDS_REQUEST });
     const res = await axios.post(
-      "http://localhost:5000/beds/add",
+      "http://localhost:5001/beds/add",
       data
     );
     console.log(res);
@@ -193,7 +193,7 @@ export const GetSingleBed = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_SINGLE_BEDS_REQUEST });
     const res = await axios.post(
-      "http://localhost:5000/beds/single",
+      "http://localhost:5001/beds/single",
       data
     );
     // console.log(res);
@@ -220,7 +220,7 @@ export const EditSingleBed = (data, id) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_SINGLE_BEDS_REQUEST });
     const res = await axios.patch(
-      `http://localhost:5000/beds/${id}`,
+      `http://localhost:5001/beds/${id}`,
       data
     );
     // console.log(res);
@@ -247,7 +247,7 @@ export const dischargePatient = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.DISCHARGE_PATIENT_REQUEST });
     const res = await axios.put(
-      `http://localhost:5000/beds/discharge`,
+      `http://localhost:5001/beds/discharge`,
       data
     );
     console.log(res);
@@ -272,31 +272,31 @@ export const dischargePatient = (data) => async (dispatch) => {
 // GET ALL PATIENT
 export const GetPatients = () => async (dispatch) => {
   try {
-    dispatch({ type: types.GET_PATIENT_REQUEST });//fetch request had started 
+    dispatch({ type: types.GET_PATIENT_REQUEST });
     const res = await axios.get(
-      `http://localhost:5000/patients`
-    );//makes an http , request to the backend api
+      `http://localhost:5001/patients`
+    );
     console.log(res.data);
     dispatch({
       type: types.GET_PATIENT_SUCCESS,
       payload: res.data,
-    });// // Dispatches a success action with the fetched patient data as payload (Redux store will update with this data).
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
 // GET ALL DATA
-export const GetAllData = () => async (dispatch) => {//This pattern is used in Redux Thunk middleware to perform asynchronous operations and dispatch actions.
+export const GetAllData = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_ALLDATA_REQUEST });
     const res = await axios.get(
-      `http://localhost:5000/hospitals`
+      `http://localhost:5001/hospitals`
     );
     console.log(res.data);
     dispatch({
       type: types.GET_ALLDATA_SUCCESS,
-      payload: res.data,//sends the **retrieved hospital data** to the Redux reducer to **update the store**.
+      payload: res.data,
     });
   } catch (error) {
     console.log(error);
@@ -308,7 +308,7 @@ export const GetAllAppointment = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_APPOINTMENT_DETAILS_REQUEST });
     const res = await axios.get(
-      `http://localhost:5000/appointments`
+      `http://localhost:5001/appointments`
     );
     // console.log(res.data);
     // return res.data;
@@ -326,7 +326,7 @@ export const DeleteAppointment = (id) => async (dispatch) => {
   try {
     dispatch({ type: types.DELETE_APPOINTMENT_REQUEST });
     const res = await axios.delete(
-      `http://localhost:5000/appointments/${id}`
+      `http://localhost:5001/appointments/${id}`
     );
     console.log(res.data);
     // return res.data;
@@ -344,7 +344,7 @@ export const GetAllReports = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_REPORTS_REQUEST });
     const res = await axios.get(
-      `http://localhost:5000/reports`
+      `http://localhost:5001/reports`
     );
     // console.log(res.data);
     return res.data;

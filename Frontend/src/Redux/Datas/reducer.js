@@ -33,7 +33,7 @@ export default function dataReducer(state = initialState, { type, payload }) {
       };
     case types.GET_ALLDATA_SUCCESS:
       return {
-        ...state,//keeps all the existing properties
+        ...state,
         loading: false,
         dashboard: payload,
       };
