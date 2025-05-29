@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import authReducer from "./auth/reducer";
-import bookingReducer from "./booking/reducer";
+import dataReducer from "./Datas/reducer";
 export const rootReducer = combineReducers({
   auth: authReducer,
-  booking: bookingReducer,
+  data: dataReducer,
 });
