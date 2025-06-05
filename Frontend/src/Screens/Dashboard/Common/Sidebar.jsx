@@ -42,7 +42,7 @@ const Sidebar = () => {
             </h1>
             <div
               style={{ marginLeft: isOpen ? "100px" : "0px" }}
-              className="bars pl-4"
+              className="bars md:pl-4"
             >
               <ImMenu onClick={toggle} style={{ cursor: "pointer" }} />
             </div>
