@@ -14,12 +14,12 @@ const NavBar = () => {
     return (
         <>
             <ToastContainer />
-            <div className='flex space-between mx-10'>
+            <div className='flex space-between mx-10 px-10'>
                 <div className='flex justify-center items-center'>
                     <img src={iit_rpr_logo} alt="iitrpr" className='h-10' />
                     <h1 className='text-2xl ml-2 text-gray-400'>Madicure</h1>
                 </div>
-                <div id="navbar" className='h-[30px] w-full flex justify-center items-center pt-10 mb-10'>
+                <div id="navbar" className='h-[30px] w-full flex justify-end items-center pt-10 mb-10'>
                     <div className='mr-5 font-md text-gray-400 cursor-pointer'>
                         <Link to="home" spy={true} smooth={true} offset={0} duration={500}>Home</Link>
                     </div>

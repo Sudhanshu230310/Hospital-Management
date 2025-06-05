@@ -8,7 +8,7 @@ const Services = () => {
                     <h1 className='text-[50px] font-bold'>SERVICES</h1>
                 </div>
                 <div className='mx-20 mt-10 pb-10'>
-                <div className='grid grid-cols-1 grid-rows-1 sml:grid-cols-3 sml:grid-rows-2 gap-14'>
+                <div className='grid grid-cols-1 grid-rows-1 md:grid-cols-3 sm:grid-rows-2 gap-14'>
                     <div className='h-[200px] bg-white rounded-2xl shadow-2xl flex items-center justify-center'>
                         <h2 className='font-bold text-2xl'>Vaccine</h2>
                     </div>

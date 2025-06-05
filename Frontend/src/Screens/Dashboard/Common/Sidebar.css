@@ -117,7 +117,7 @@
   }
 
   .mobile-menu-btn:hover {
-    background: rgba(0, 21, 41, 0.9);
+    background: green;
   }
 
   .mobile-overlay {
@@ -236,8 +236,8 @@
     transition: all 0.5s;
   }
   .link:hover {
-    background: rgba(0, 21, 41);
-    color: rgb(155, 155, 155);
+    background: green;
+    color: white;
     transition: all 0.5s;
   }
   .active {

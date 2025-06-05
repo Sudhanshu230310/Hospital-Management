@@ -34,6 +34,7 @@ const nurseRegister =  async (req, res) => {
 
 const nurseLogin =  async (req, res) => {
     const { nurseID, password } = req.body;
+    console.log(nurseID);
     try {
       const nurse = await NurseModel.findOne({ nurseID, password });
       console.log(nurse);
@@ -44,6 +45,7 @@ const nurseLogin =  async (req, res) => {
         res.send({ message: "Successful", user: nurse, token: token });
       } else {
         res.send({ message: "Wrong credentials" });
+        console.log("Wrong Crediantials")
       }
     } catch (error) {
       console.log({ message: "Error" });
