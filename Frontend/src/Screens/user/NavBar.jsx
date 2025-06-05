@@ -1,76 +1,166 @@
-import React from 'react'
+
+import React, { useState } from 'react'
 import { Link } from 'react-scroll'
 import { Link as Link2 } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { iit_rpr_logo } from '../../assets';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const notify = (text) => toast(text);
-const NavBar = () => {
 
+const NavBar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { data } = useSelector((store) => store.auth);
     const dispatch = useDispatch();
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <>
             <ToastContainer />
-            <div className='flex space-between mx-10 px-10'>
-                <div className='flex justify-center items-center'>
-                    <img src={iit_rpr_logo} alt="iitrpr" className='h-10' />
-                    <h1 className='text-2xl ml-2 text-gray-400'>Madicure</h1>
-                </div>
-                <div id="navbar" className='h-[30px] w-full flex justify-end items-center pt-10 mb-10'>
-                    <div className='mr-5 font-md text-gray-400 cursor-pointer'>
-                        <Link to="home" spy={true} smooth={true} offset={0} duration={500}>Home</Link>
-                    </div>
-                    <div className='mr-5 font-md text-gray-400 cursor-pointer'>
-                        <Link to="about" spy={true} smooth={true} offset={0} duration={500}>About Us</Link>
-                    </div>
-                    <div className='mr-5 font-md text-gray-400 cursor-pointer'>
-                        <Link to="services" spy={true} smooth={true} offset={0} duration={500}>Services</Link>
-                    </div>
-                    <div className='mr-5 font-md text-gray-400 cursor-pointer'>
-                        <Link to="faq" spy={true} smooth={true} offset={0} duration={500}>FAQ</Link>
-                    </div>
-                    <div className='mr-5 font-md text-gray-400 cursor-pointer'>
-                        <Link2
-                            // className="link"
-                            activeclassname="active"
-                            to={"/dLogin"}
-                        >Staff Login</Link2>
-                    </div>
-                    {/* <div className='mr-5 font-md text-gray-400 cursor-pointer'>
-                    {
-                        console.log(data.isAuthenticated)
-                    }
-                    {
-                        
-                    data?.isAuthenticated ? (
-                        <Link2
-                            to=""
-                            className="nav-link"
-                            onClick={() => {
-                                dispatch({ type: "AUTH_LOGOUT" });
-                                notify("Logged out");
-                            }}
-                        >
-                            Patient Logout
-                        </Link2>
-                    ) : (
-                        <Link2 to={"/login"}>
-                            Patient Login
-                        </Link2>
-                    )}
-                </div> */}
+            <nav className='sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-lg transition-all duration-300'>
+                <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                    <div className='flex justify-between items-center h-16'>
+                        {/* Logo */}
+                        <div className='flex-shrink-0 transform transition duration-300 hover:scale-105'>
+                            <h1 className='text-2xl lg:text-3xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent'>
+                                Medicare
+                            </h1>
+                        </div>
 
-                    {/* <div className='mr-5 font-md text-gray-400 cursor-pointer'>
-                    Reports
-                </div> */}
-                </div>
-            </div>
+                        {/* Desktop Menu */}
+                        <div className='hidden md:flex items-center space-x-8'>
+                            <Link 
+                                to="home" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                className='text-gray-700 hover:text-green-600 cursor-pointer transition-all duration-300 font-medium relative group'
+                            >
+                                Home
+                                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full'></span>
+                            </Link>
+                            <Link 
+                                to="about" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                className='text-gray-700 hover:text-green-600 cursor-pointer transition-all duration-300 font-medium relative group'
+                            >
+                                About Us
+                                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full'></span>
+                            </Link>
+                            <Link 
+                                to="services" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                className='text-gray-700 hover:text-green-600 cursor-pointer transition-all duration-300 font-medium relative group'
+                            >
+                                Services
+                                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full'></span>
+                            </Link>
+                            <Link 
+                                to="faq" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                className='text-gray-700 hover:text-green-600 cursor-pointer transition-all duration-300 font-medium relative group'
+                            >
+                                FAQ
+                                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full'></span>
+                            </Link>
+                            <Link2
+                                to={"/dLogin"}
+                                className='bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-medium'
+                            >
+                                Staff Login
+                            </Link2>
+                        </div>
 
+                        {/* Mobile menu button */}
+                        <div className='md:hidden'>
+                            <button
+                                onClick={toggleMenu}
+                                className='text-gray-700 hover:text-green-600 transition-colors duration-300 p-2'
+                            >
+                                {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    <div className={`md:hidden transition-all duration-300 ease-in-out ${
+                        isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+                    }`}>
+                        <div className='px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg shadow-lg mt-2'>
+                            <Link 
+                                to="home" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                onClick={closeMenu}
+                                className='block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-all duration-300 cursor-pointer'
+                            >
+                                Home
+                            </Link>
+                            <Link 
+                                to="about" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                onClick={closeMenu}
+                                className='block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-all duration-300 cursor-pointer'
+                            >
+                                About Us
+                            </Link>
+                            <Link 
+                                to="services" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                onClick={closeMenu}
+                                className='block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-all duration-300 cursor-pointer'
+                            >
+                                Services
+                            </Link>
+                            <Link 
+                                to="faq" 
+                                spy={true} 
+                                smooth={true} 
+                                offset={-64} 
+                                duration={500}
+                                onClick={closeMenu}
+                                className='block px-3 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-all duration-300 cursor-pointer'
+                            >
+                                FAQ
+                            </Link>
+                            <Link2
+                                to={"/dLogin"}
+                                onClick={closeMenu}
+                                className='block w-full text-center bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-md transition-all duration-300 mt-2'
+                            >
+                                Staff Login
+                            </Link2>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </>
-
     )
 }
 

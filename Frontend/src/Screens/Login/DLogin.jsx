@@ -485,15 +485,15 @@ const DLogin = () => {
               <div>
                 <h1 className='font-bold text-3xl md:text-4xl lg:text-5xl pt-3 lg:pt-5'>Health Care</h1>
               </div>
-              <div className='mt-4 flex items-center justify-center'>
-                <span className='font-bold text-sm md:text-base'>Temporary Credentials</span>
+              {/* <div className='mt-4 flex items-center justify-center'>
+                { <span className='font-bold text-sm md:text-base'>Temporary Credentials</span>
               </div>
               <div className='mt-2 flex items-center justify-center'>
                 <span className='font-bold text-sm md:text-base'>ID - 1234</span> 
               </div>
               <div className='mt-2 flex items-center justify-center'>
-                <span className='font-bold text-sm md:text-base'>Password - 2024@mnc</span> 
-              </div>
+                <span className='font-bold text-sm md:text-base'>Password - 2024@mnc</span>  }
+              </div> */}
             </div>
           </div>
 
