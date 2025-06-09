@@ -20,8 +20,8 @@ const Home = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full animate-spin" style={{animationDuration: '20s'}}></div>
       </div>
 
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto max-w-7xl relative z-10 rounded-lg">
+        <div className="grid lg:grid-cols-2 gap-12 items-center px-6 py-6">
           {/* Left Content */}
           <div className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'

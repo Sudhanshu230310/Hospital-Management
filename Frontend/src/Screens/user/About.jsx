@@ -38,8 +38,8 @@ const About = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-blue-50 opacity-50"></div>
       
-      <div className='container mx-auto max-w-7xl relative z-10'>
-        <div className='grid lg:grid-cols-2 gap-12 items-center'>
+      <div className='container mx-auto max-w-7xl relative z-10 rounded-lg'>
+        <div className='grid lg:grid-cols-2 gap-12 items-center px-5 py-6'>
           {/* Left side - Title */}
           <div className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
@@ -48,7 +48,7 @@ const About = () => {
               {/* Decorative background */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-800 opacity-5"></div>
               
-              <div className="relative z-10">
+              <div className="relative z-10 ">
                 <h1 className='font-bold text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent mb-4'>
                   ABOUT US
                 </h1>

@@ -39,7 +39,7 @@ const Services = () => {
         <div className="absolute bottom-10 sm:bottom-20 right-2 sm:right-10 w-40 h-40 sm:w-96 sm:h-96 bg-white/5 rounded-full blur-3xl animate-pulse delay-75"></div>
       </div>
 
-      <div className='container mx-auto max-w-7xl relative z-10'>
+      <div className='container mx-auto max-w-7xl relative z-10 px-5 py-6 rounded-lg'>
         {/* Header */}
         <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'

@@ -31,10 +31,10 @@ const MainPage = () => {
                     <Faq />
                 </div>
                 {/* Footer */}
-                <footer className="bg-black/20 backdrop-blur-md border-t border-white/10 py-8">
-                    <div className="container mx-auto px-4 text-center">
+                <footer className="bg-black/20 backdrop-blur-md border-t border-white/10 py-8 ">
+                    <div className="container mx-auto px-4 text-center flex justify-between items-center py-2 rounded-lg">
                         <p className="text-green-100">© 2024 Medicare. All rights reserved.</p>
-                        <p className="text-green-200 text-sm mt-2">Developed by Ishwar & Sudhanshu</p>
+                        <p className="text-green-200 text-sm">Developed by Ishwar & Sudhanshu</p>
                     </div>
                 </footer>
             </div>

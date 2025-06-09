@@ -55,7 +55,7 @@ const Faq = () => {
         <div className="absolute bottom-32 left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-pulse delay-75"></div>
       </div>
 
-      <div className='container mx-auto max-w-4xl relative z-10'>
+      <div className='container mx-auto max-w-4xl relative z-10 px-5 py-6 rounded-lg'>
         {/* Header */}
         <div className={`text-center mb-16 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
