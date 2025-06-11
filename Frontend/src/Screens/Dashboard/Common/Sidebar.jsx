@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FaAmbulance } from "react-icons/fa";
 import { GiNurseFemale } from "react-icons/gi";
@@ -18,10 +18,12 @@ import { RiAdminLine } from "react-icons/ri";
 import { TbBed } from "react-icons/tb";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { ModalContext } from "../../../Context/ContextProvider";
 import './Sidebar.css'
 
+
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const {isOpen,setIsOpen}=useContext(ModalContext)
   const dispatch = useDispatch();
 
   const {
@@ -48,9 +50,9 @@ const Sidebar = () => {
             </div>
           </div>
           <div className="bottomSection pl-3">
-            <Link className="link" activeclassname="active" to={"/dashboard"}>
+            <Link onClick={()=>setIsOpen(false)}  className="link" activeclassname="active" to={"/dashboard"}>
               <div className="icon">
-                <MdDashboardCustomize className="mainIcon" />
+                <MdDashboardCustomize  className="mainIcon" />
               </div>
               <div
                 style={{ display: isOpen ? "block" : "none" }}
@@ -64,7 +66,7 @@ const Sidebar = () => {
               <Link
                 className="link"
                 activeclassname="active"
-                to={"/nurseProfile"}
+                onClick={()=>setIsOpen(false)} to={"/nurseProfile"}
               >
                 <div className="icon">
                   <CgProfile className="mainIcon" />
@@ -81,7 +83,7 @@ const Sidebar = () => {
               <Link
                 className="link"
                 activeclassname="active"
-                to={"/addPatient"}
+                onClick={()=>setIsOpen(false)}  to={"/addPatient"}
               >
                 <div className="icon">
                   <FaHospitalUser className="mainIcon" />
@@ -99,7 +101,7 @@ const Sidebar = () => {
               <Link
                 className="link"
                 activeclassname="active"
-                to={"/bookAppointment"}
+                onClick={()=>setIsOpen(false)} to={"/bookAppointment"}
               >
                 <div className="icon">
                   <BsBookmarkPlus className="mainIcon" />
@@ -113,7 +115,7 @@ const Sidebar = () => {
               </Link>
             ) : null}
             {user?.userType === "admin" ? (
-              <Link className="link" activeclassname="active" to={"/addDoctor"}>
+              <Link onClick={()=>setIsOpen(false)}  className="link" activeclassname="active" to={"/addDoctor"}>
                 <div className="icon">
                   <AiOutlineUserAdd className="mainIcon" />
                 </div>
@@ -126,7 +128,7 @@ const Sidebar = () => {
               </Link>
             ) : null}
             {user?.userType === "admin" ? (
-              <Link className="link" activeclassname="active" to={"/addNurse"}>
+              <Link onClick={()=>setIsOpen(false)}  className="link" activeclassname="active" to={"/addNurse"}>
                 <div className="icon">
                   <GiNurseFemale className="mainIcon" />
                 </div>
@@ -139,7 +141,7 @@ const Sidebar = () => {
               </Link>
             ) : null}
             {user?.userType === "admin" ? (
-              <Link className="link" activeclassname="active" to={"/admin"}>
+              <Link onClick={()=>setIsOpen(false)}  className="link" activeclassname="active" to={"/admin"}>
                 <div className="icon">
                   <RiAdminLine
                     className="mainIcon"
@@ -156,7 +158,7 @@ const Sidebar = () => {
             ) : null}
 
             {user?.userType === "admin" ? (
-              <Link className="link" activeclassname="active" to={"/addBeds"}>
+              <Link onClick={()=>setIsOpen(false)}  className="link" activeclassname="active" to={"/addBeds"}>
                 <div className="icon">
                   <TbBed className="mainIcon" />
                 </div>
@@ -170,7 +172,7 @@ const Sidebar = () => {
             ) : null}
 
             {user?.userType === "admin" ? (
-              <Link
+              <Link onClick={()=>setIsOpen(false)} 
                 className="link"
                 activeclassname="active"
                 to={"/addambulance"}
@@ -205,7 +207,7 @@ const Sidebar = () => {
             ) : null} */}
 
             {user?.userType === "doctor" ? (
-              <Link
+              <Link onClick={()=>setIsOpen(false)} 
                 className="link"
                 activeclassname="active"
                 to={"/doctorProfile"}
@@ -221,7 +223,7 @@ const Sidebar = () => {
                 </div>
               </Link>
             ) : null}
-            <Link className="link" activeclassname="active" to={"/rooms"}>
+            <Link onClick={()=>setIsOpen(false)}  className="link" activeclassname="active" to={"/rooms"}>
               <div className="icon">
                 <MdBedroomChild className="mainIcon" />
               </div>
@@ -233,7 +235,7 @@ const Sidebar = () => {
               </div>
             </Link>
             {user?.userType === "doctor" ? (
-              <Link className="link" activeclassname="active" to={"/reports"}>
+              <Link onClick={()=>setIsOpen(false)}  className="link" activeclassname="active" to={"/reports"}>
                 <div className="icon">
                   <TbReportMedical className="mainIcon" />
                 </div>
@@ -246,7 +248,7 @@ const Sidebar = () => {
               </Link>
             ) : null}
             {user?.userType === "doctor" ? (
-              <Link
+              <Link onClick={()=>setIsOpen(false)} 
                 className="link"
                 activeclassname="active"
                 to={"/updateAppointment"}
@@ -263,7 +265,7 @@ const Sidebar = () => {
               </Link>
             ) : null}
             {user?.userType === "doctor" ? (
-              <Link
+              <Link onClick={()=>setIsOpen(false)} 
                 className="link"
                 activeclassname="active"
                 to={"/createReport"}
@@ -322,7 +324,6 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
 
 // import React, { useState } from "react";
 // import { AiOutlineUserAdd } from "react-icons/ai";
