@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NurseRegister, SendPassword } from '../../../Redux/auth/action'
@@ -6,11 +6,14 @@ import Sidebar from '../Common/Sidebar'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navigate } from "react-router-dom";
+import { ModalContext } from '../../../Context/ContextProvider';
+import SidebarS from '../Common/SidebarS';
 const notify = (text) => toast(text);
 
 
 const AddNurse = () => {
-
+    const { isOpen,setIsOpen } = useContext(ModalContext);
+    const sidebarWidth = isOpen ? "w-64" : "w-16";
     const { data } = useSelector((store) => store.auth);
 
     const dispatch = useDispatch();
@@ -77,7 +80,11 @@ const AddNurse = () => {
         <>
             <ToastContainer />
             <div className='flex bg-[rgb(245,245,245)]'>
-                <Sidebar />
+                <div className={`${sidebarWidth} lg:block hidden transition-all duration-300 `}
+                >
+                    <Sidebar />
+                </div>
+                <div className={`lg:hidden block cursor-pointer translate-x-60 pl-10 ${isOpen?"translate-x-60":"translate-x-30"} w-16`} ><SidebarS/></div>
                 <div className='mt-8 w-full'>
                     <div className='w-inherit  flex items-center justify-center'>
                         <h1 className='font-bold border py-2 px-12 text-3xl rounded-xl bg-gradient-to-r to-green-800 from-green-600 text-white'>Health Care</h1>
