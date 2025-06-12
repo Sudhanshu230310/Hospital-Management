@@ -32,7 +32,7 @@ const Home = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                   Welcome to
                   <span className="block bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent">
-                    MEDICARE
+                      ClinIntel
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-green-100 font-light">

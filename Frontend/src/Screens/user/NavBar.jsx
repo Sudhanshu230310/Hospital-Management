@@ -31,7 +31,7 @@ const NavBar = () => {
                         {/* Logo */}
                         <div className='flex-shrink-0 transform transition duration-300 hover:scale-105'>
                             <h1 className='text-2xl lg:text-3xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent'>
-                                Medicare
+                                ClinIntel
                             </h1>
                         </div>
 
