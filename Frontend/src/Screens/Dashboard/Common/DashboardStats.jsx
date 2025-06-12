@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Table } from "antd";
+import { Menu, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
   MdPersonAdd,
@@ -14,9 +14,11 @@ import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import Sidebar from "./Sidebar";
 import { ModalContext } from "../../../Context/ContextProvider";
 import { GetAllData, GetPatients } from "../../../Redux/Datas/action";
+import MenuIcon from "../../../Icon/menu";
+import SidebarS from "./SidebarS";
 
 const DashboardStats = () => {
-  const { isOpen } = useContext(ModalContext);
+  const { isOpen,setIsOpen } = useContext(ModalContext);
   const dispatch = useDispatch();
 
   // Pull patients list and dashboard counts from Redux store
@@ -47,11 +49,11 @@ const DashboardStats = () => {
     <div className="flex bg-[rgb(245,245,245)] h-screen overflow-hidden">
       {/* Sidebar */}
       <div
-        className={`${sidebarWidth} transition-all duration-300 overflow-hidden`}
+        className={`${sidebarWidth} lg:block hidden transition-all duration-300 overflow-hidden`}
       >
         <Sidebar />
       </div>
-
+      <div className={`lg:hidden block cursor-pointer translate-x-60 pl-10 ${isOpen?"translate-x-60":"translate-x-30"} w-16`} ><SidebarS/></div>
       {/* Main content */}
       <div className="flex-1 p-4 lg:p-8 overflow-auto transition-all duration-300">
         <div className="flex justify-center">

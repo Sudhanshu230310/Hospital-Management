@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GetDoctorDetails } from '../../../Redux/Datas/action'
 import { UpdateDoctor, UpdateNurse } from '../../../Redux/auth/action'
 import Sidebar from '../Common/Sidebar'
@@ -7,9 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { admin2 } from '../../../assets/index'
 import { AiFillCalendar, AiFillEdit } from "react-icons/ai";
+import { ModalContext } from "../../../Context/ContextProvider";
+import SidebarS from "../Common/SidebarS";
 
 const NurseProfile = () => {
-
+    const { isOpen,setIsOpen } = useContext(ModalContext);
+    const sidebarWidth = isOpen ? "w-64" : "w-16";
     const {
         data: { user },
       } = useSelector((state) => state.auth);
@@ -66,7 +69,11 @@ const NurseProfile = () => {
     return (
         <>
             <div className='flex bg-[rgb(245,245,245)]'>
-                <Sidebar />
+                <div className={`${sidebarWidth} lg:block hidden transition-all duration-300 `}
+                >
+                    <Sidebar />
+                </div>
+                <div className={`lg:hidden block cursor-pointer translate-x-60 pl-10 ${isOpen?"translate-x-60":"translate-x-30"} w-16`} ><SidebarS/></div>
                 <div className='mt-8 w-full'>
                     <div className='w-inherit  flex items-center justify-center'>
                         <h1 className='font-bold border py-2 px-12 text-3xl rounded-xl bg-gradient-to-r to-green-800 from-green-600 text-white'>Profile</h1>

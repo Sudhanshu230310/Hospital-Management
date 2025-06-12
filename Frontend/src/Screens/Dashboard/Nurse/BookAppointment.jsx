@@ -1,16 +1,19 @@
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { CommonProblem } from './RawData'
 import { useDispatch } from "react-redux";
 import { AddPatients, CreateBooking } from '../../../Redux/Datas/action'
 import Sidebar from "../Common/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SidebarS from "../Common/SidebarS";
+import { ModalContext } from "../../../Context/ContextProvider";
 const notify = (text) => toast(text);
 
 
 const BookAppointment = () => {
-
+    const { isOpen,setIsOpen } = useContext(ModalContext);
+    const sidebarWidth = isOpen ? "w-64" : "w-16";
     const dispatch = useDispatch();
     const [Loading, setLoading] = useState(false);
 
@@ -63,7 +66,11 @@ const BookAppointment = () => {
         <>
             <ToastContainer />
             <div className='flex bg-[rgb(245,245,245)]'>
-                <Sidebar />
+                <div className={`${sidebarWidth} lg:block hidden transition-all duration-300  h-full`}
+                >
+                    <Sidebar />
+                </div>
+                <div className={`lg:hidden block cursor-pointer translate-x-60 pl-10 ${isOpen?"translate-x-60":"translate-x-30"}`} ><SidebarS/></div>
                 <div className='mt-8 w-full'>
                     <div className='w-inherit  flex items-center justify-center'>
                         <h1 className='font-bold border py-3 px-12 text-3xl rounded-xl bg-gradient-to-r to-green-800 from-green-600 text-white'>Health Care</h1>

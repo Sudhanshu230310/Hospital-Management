@@ -20,9 +20,10 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalContext } from "../../../Context/ContextProvider";
 import './Sidebar.css'
+import MenuIcon from "../../../Icon/menu";
 
 
-const Sidebar = () => {
+const SidebarS = () => {
   const {isOpen,setIsOpen}=useContext(ModalContext)
   const dispatch = useDispatch();
 
@@ -39,14 +40,11 @@ const Sidebar = () => {
       <div className={`overflow-y-visible sticky top-[70px]`}>
         <div style={{ width: isOpen ? "250px" : "70px" }} className={`sidebar bg-gradient-to-br to-green-800 from-green-600`}>
           <div className="top_section">
-            <h1 style={{ display: isOpen ? "block" : "none" }} className={`logo pl-2`}>
-              HSM
-            </h1>
             <div
-              style={{ marginLeft: isOpen ? "100px" : "0px" }}
-              className="bars md:pl-4"
+              style={{ marginLeft: isOpen ? "180px" : "0px" }}
+              className="bars md:pl-4 pl-4"
             >
-              <ImMenu onClick={toggle} style={{ cursor: "pointer" }} />
+              <ImMenu className="size-7" onClick={toggle} style={{ cursor: "pointer" }} />
             </div>
           </div>
           <div className="bottomSection pl-3">
@@ -323,7 +321,7 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarS;
 
 // import React, { useState } from "react";
 // import { AiOutlineUserAdd } from "react-icons/ai";
