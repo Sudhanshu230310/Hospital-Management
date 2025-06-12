@@ -1,189 +1,111 @@
-
-
-import { Table } from "antd";//Imports the Table component from Ant Design, a popular React UI library
-import React, { useContext } from "react";//
-
-import { MdPersonAdd } from "react-icons/md";// Imports a Material Design icon for "person add" (used for doctors).
-import { FaUserNurse } from "react-icons/fa";// Imports a FontAwesome icon for "user nurse" (used for nurses).
-import { RiEmpathizeLine } from "react-icons/ri";//// Imports a Remix Icon for "empathize" (used for patients).
-import { FaBed } from "react-icons/fa";//Imports a FontAwesome icon for "bed" (used for beds).
-import { MdOutlineBedroomParent } from "react-icons/md";//Imports a Material Design icon for "bedroom parent" (not used in the visible code, possibly for rooms).
-import { FaAmbulance } from "react-icons/fa";//Imports a FontAwesome icon for "ambulance" (used for ambulances).
-import { BsFillBookmarkCheckFill } from "react-icons/bs";//bootstrap icon 
-import { MdPayment } from "react-icons/md";//material design
-import { RiAdminLine } from "react-icons/ri";// remix
-//  //These lines import various icons from the react-icons library.
-//  Each icon represents a different entity (doctor, nurse, patient, bed, ambulance, appointment, payment, admin, etc.)
-//  and is used in the dashboard UI for visual representation.
-
-import Sidebar from './Sidebar'
-import { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { GetAllData, GetPatients } from '../../../Redux/Datas/action'//
-import { ModalContext } from "../../../Context/ContextProvider";
-//getpatients : gives list of all the patirnts
+import {
+  MdPersonAdd,
+  MdPayment,
+  MdOutlineBedroomParent,
+  MdOutlineBedroomChild,
+} from "react-icons/md";
+import { FaUserNurse, FaBed, FaAmbulance } from "react-icons/fa";
+import { RiEmpathizeLine, RiAdminLine } from "react-icons/ri";
+import { BsFillBookmarkCheckFill } from "react-icons/bs";
 
+import Sidebar from "./Sidebar";
+import { ModalContext } from "../../../Context/ContextProvider";
+import { GetAllData, GetPatients } from "../../../Redux/Datas/action";
 
 const DashboardStats = () => {
-    const {isOpen}=useContext(ModalContext);
-    const columns = [
-        { title: "Name", dataIndex: "patientName", key: "patientName" },
-        { title: "Age", dataIndex: "age", key: "age" },
-        { title: "Disease", dataIndex: "disease", key: "disease" },
-        { title: "Blood Group", dataIndex: "bloodGroup", key: "bloodGroup" },
-        { title: "Department", dataIndex: "department", key: "department" },
-        { title: "Email", dataIndex: "email", key: "email" },
-    ];
+  const { isOpen } = useContext(ModalContext);
+  const dispatch = useDispatch();
 
-    const { patients } = useSelector((store) => store.data.patients);
-    const {
-        dashboard: { data },
-    } = useSelector((store) => store.data);
+  // Pull patients list and dashboard counts from Redux store
+  const { patients } = useSelector((store) => store.data.patients);
+  const {
+    dashboard: { data },
+  } = useSelector((store) => store.data);
 
-    console.log(data);
+  useEffect(() => {
+    dispatch(GetPatients());
+    dispatch(GetAllData());
+  }, [dispatch]);
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(GetPatients());
-        dispatch(GetAllData());
-    }, []);
-    return (
-        <>
-            <div className='overflow-x-hidden flex flex-col lg:flex-row bg-[rgb(245,245,245)]'>
-                <div className=""><Sidebar /></div>
-                <div className={`mt-4 lg:mt-8 ${!isOpen?"w-full":"max-w-7xl pr-12"}`}>
-                    <div className='w-inherit flex items-center justify-center px-4'>
-                        <h1 className='font-bold py-2 px-4 lg:py-3 lg:px-12 text-xl lg:text-3xl rounded-xl bg-gradient-to-r to-green-800 from-green-600 text-white text-center'>Welcome to Health and Care</h1>
-                    </div>
-                    <div className={`mt-4 lg:mt-6 flex flex-col items-center justify-center mx-4 lg:mx-10`}>
-                        <div className="w-full">
-                            <div className="w-full">
-                                <h2 className="font-bold text-xl lg:text-[30px]">STATS</h2>
-                            </div>
-                            <div className="w-full flex flex-col mt-3">
-                                <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <MdPersonAdd size={60} className="lg:text-[80px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.doctor}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Doctors
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <FaUserNurse size={50} className="lg:text-[60px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.nurse}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Nurses
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <RiEmpathizeLine size={55} className="lg:text-[65px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.patient}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Patients
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <RiAdminLine size={50} className="lg:text-[60px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.admin}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Admins
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 lg:mt-6">
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <FaAmbulance size={50} className="lg:text-[60px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.ambulance}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Ambulances
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <FaBed size={50} className="lg:text-[60px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.bed}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Beds
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <BsFillBookmarkCheckFill size={40} className="lg:text-[50px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.appointment}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Appointments
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="h-[100px] flex justify-center items-center bg-white rounded-xl shadow-2xl">
-                                        <div className="mr-4 lg:mr-8">
-                                            <MdPayment size={50} className="lg:text-[60px]" />
-                                        </div>
-                                        <div className="ml-2 lg:ml-3 flex flex-col">
-                                            <div className="text-xl lg:text-2xl font-bold text-center">
-                                                {data?.report}
-                                            </div>
-                                            <div className="mt-1 text-sm lg:text-xl font-bold">
-                                                Reports
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full">
-                            <div className="w-full">
-                                <h2 className="font-bold text-xl lg:text-[30px] mt-6 lg:mt-10">PATIENT DETAILS</h2>
-                            </div>
-                            <div className="patientBox mt-3 shadow-2xl overflow-x-auto">
-                                <Table columns={columns} dataSource={patients} scroll={{ x: 800 }} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
+  // Toggle sidebar width
+  const sidebarWidth = isOpen ? "w-64" : "w-16";
 
-export default DashboardStats
+  // Table column definitions
+  const columns = [
+    { title: "Name", dataIndex: "patientName", key: "patientName" },
+    { title: "Age", dataIndex: "age", key: "age" },
+    { title: "Disease", dataIndex: "disease", key: "disease" },
+    { title: "Blood Group", dataIndex: "bloodGroup", key: "bloodGroup" },
+    { title: "Department", dataIndex: "department", key: "department" },
+    { title: "Email", dataIndex: "email", key: "email" },
+  ];
+
+  return (
+    <div className="flex bg-[rgb(245,245,245)] h-screen overflow-hidden">
+      {/* Sidebar */}
+      <div
+        className={`${sidebarWidth} transition-all duration-300 overflow-hidden`}
+      >
+        <Sidebar />
+      </div>
+
+      {/* Main content */}
+      <div className="flex-1 p-4 lg:p-8 overflow-auto transition-all duration-300">
+        <div className="flex justify-center">
+          <h1 className="font-bold py-2 px-4 lg:py-3 lg:px-12 text-xl lg:text-3xl rounded-xl bg-gradient-to-r from-green-600 to-green-800 text-white text-center">
+            Welcome to Health and Care
+          </h1>
+        </div>
+
+        {/* STATS */}
+        <section className="mt-8 lg:mt-12">
+          <h2 className="font-bold text-xl lg:text-3xl mb-4">STATS</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Doctors */}
+            <StatCard icon={<MdPersonAdd size={isOpen ? 80 : 60} />} count={data?.doctor} label="Doctors" />
+            {/* Nurses */}
+            <StatCard icon={<FaUserNurse size={isOpen ? 60 : 50} />} count={data?.nurse} label="Nurses" />
+            {/* Patients */}
+            <StatCard icon={<RiEmpathizeLine size={isOpen ? 65 : 55} />} count={data?.patient} label="Patients" />
+            {/* Admins */}
+            <StatCard icon={<RiAdminLine size={isOpen ? 60 : 50} />} count={data?.admin} label="Admins" />
+            {/* Ambulances */}
+            <StatCard icon={<FaAmbulance size={isOpen ? 60 : 50} />} count={data?.ambulance} label="Ambulances" />
+            {/* Beds */}
+            <StatCard icon={<FaBed size={isOpen ? 60 : 50} />} count={data?.bed} label="Beds" />
+            {/* Appointments */}
+            <StatCard icon={<BsFillBookmarkCheckFill size={isOpen ? 50 : 40} />} count={data?.appointment} label="Appointments" />
+            {/* Reports */}
+            <StatCard icon={<MdPayment size={isOpen ? 60 : 50} />} count={data?.report} label="Reports" />
+          </div>
+        </section>
+
+        {/* PATIENT DETAILS */}
+        <section className="mt-12">
+          <h2 className="font-bold text-xl lg:text-3xl mb-4">PATIENT DETAILS</h2>
+          <div className="shadow-2xl overflow-x-auto rounded-lg bg-white">
+            <Table columns={columns} dataSource={patients} scroll={{ x: 800 }} />
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+// A small reusable stat‐card component
+const StatCard = ({ icon, count, label }) => (
+  <div className="h-[100px] flex items-center justify-center bg-white rounded-xl shadow-2xl">
+    <div className="mr-4">{icon}</div>
+    <div className="ml-2 flex flex-col">
+      <div className="text-xl lg:text-2xl font-bold text-center">
+        {count ?? "--"}
+      </div>
+      <div className="mt-1 text-sm lg:text-xl font-bold">{label}</div>
+    </div>
+  </div>
+);
+
+export default DashboardStats;
