@@ -37,7 +37,7 @@ const SidebarS = () => {
 
   return (
     <>
-      <div className={`overflow-y-visible sticky top-[70px]`}>
+      <div className={`overflow-y-visible sticky z-50 top-[70px]`}>
         <div style={{ width: isOpen ? "250px" : "70px" }} className={`sidebar bg-gradient-to-br to-green-800 from-green-600`}>
           <div className="top_section">
             <div

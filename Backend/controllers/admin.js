@@ -145,13 +145,12 @@ const forgotPassword = async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "2023mcb1348@iitrpr.ac.in",
+            user: "gaurs8688@gmail.com",
             pass: process.env.PASSWORD,
         },
     });
-
     const mailOptions = {
-        from: "2023mcb1348@iitrpr.ac.in",
+        from: "gaurs8688@gmail.com",
         to: email,
         subject: "Account ID and Password",
         text: `This is your User Id : ${userId} and  Password : ${password} .`,
