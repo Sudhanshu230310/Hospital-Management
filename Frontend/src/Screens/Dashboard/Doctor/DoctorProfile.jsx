@@ -243,7 +243,7 @@ const DoctorProfile = () => {
                                                 name="mobile"
                                                 value={formData.mobile}
                                                 onChange={handleFormChange}
-                                                type="number"
+                                                type="text"
                                                 placeholder="mobile"
                                                 className="mr-3"
                                             />

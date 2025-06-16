@@ -12,7 +12,7 @@ const reportSchema = mongoose.Schema({
   },
 
   docMobile: {
-    type: Number,
+    type:   String,
     required: true,
   },
 
@@ -53,7 +53,7 @@ const reportSchema = mongoose.Schema({
   },
 
   patientMobile: {
-    type: Number,
+    type: String,
     required: true,
   },
 

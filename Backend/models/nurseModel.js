@@ -15,9 +15,14 @@ const nurseSchema = mongoose.Schema({
     type: String,
   },
 
+  // mobile: {
+  //   type: Number,
+  //   minlength: 10,
+  // },
+
   mobile: {
-    type: Number,
-    minlength: 10,
+    type: String,
+    minlength : 10,
   },
 
   email: {

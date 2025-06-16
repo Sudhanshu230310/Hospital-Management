@@ -236,7 +236,7 @@ const NurseProfile = () => {
                                                 name="mobile"
                                                 value={formData.mobile}
                                                 onChange={handleFormChange}
-                                                type="number"
+                                                type="text"
                                                 placeholder="mobile"
                                                 className="mr-3 my-2 border border-gray-700 px-2 rounded-md"
                                             />

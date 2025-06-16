@@ -32,10 +32,15 @@ const adminSchema = mongoose.Schema({
     type: Number,
   },
 
-  mobile: {
-    type: Number,
-    minlength: 10,
-  },
+  // mobile: {
+  //   type: Number,
+  //   minlength: 10,
+  // },
+
+ mobile: {
+  type: String,
+  minlength : 10,
+},
 
   DOB: {
     type: String,

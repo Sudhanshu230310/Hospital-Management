@@ -57,7 +57,7 @@ const AddAdmin = () => {
         password: res.data.password,
         userId: res.data.adminID,
       };
-      dispatch(SendPassword(data)).then((res) => notify("Account Detais Sent"));
+      dispatch(SendPassword(data)).then((res) => notify("Account Details Sent"));
       setloading(false);
       setAdminValue(InitData);
     });
@@ -116,7 +116,7 @@ const AddAdmin = () => {
                 <div className='flex mx-10 my-3'>
                   <h3 className='flex items-center  font-bold w-[21%]'>Contact Number</h3>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="   Emergency Number"
                     name="mobile"
                     value={AdminValue.mobile}

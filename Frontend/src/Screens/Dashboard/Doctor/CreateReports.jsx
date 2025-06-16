@@ -137,7 +137,7 @@ const CreateReports = () => {
                                 <div className='flex mx-10 my-3'>
                                     <h3 className='flex items-center  font-bold w-[21%]'>Doctor Mobile</h3>
                                     <input
-                                        type="number"
+                                        type="text"
                                         placeholder="   Number"
                                         name="docMobile"
                                         value={ReportValue.docMobile}
@@ -173,7 +173,7 @@ const CreateReports = () => {
                                 <div className='flex mx-10 my-3'>
                                     <h3 className='flex items-center  font-bold w-[21%]'>Patient Mobile</h3>
                                     <input
-                                        type="number"
+                                        type="text"
                                         placeholder="   Number"
                                         name="patientMobile"
                                         value={ReportValue.patientMobile}

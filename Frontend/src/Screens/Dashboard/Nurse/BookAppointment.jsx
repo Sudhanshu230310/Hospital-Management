@@ -157,7 +157,7 @@ const BookAppointment = () => {
                                 <div className='flex mx-10 my-3'>
                                     <h3 className='flex items-center  font-bold w-[21%]'>Patient Mobile</h3>
                                     <input
-                                        type="number"
+                                        type="text"
                                         placeholder="   Number"
                                         name="mobile"
                                         value={BookAppoint.mobile}

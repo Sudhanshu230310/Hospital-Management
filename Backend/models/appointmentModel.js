@@ -15,9 +15,10 @@ const appointmentSchema = mongoose.Schema({
     type: String,
   },
 
-  mobile: {
-    type: Number,
-  },
+ mobile: {
+  type: String,
+  minlength : 10,
+},
   
   email: {
     type: String,
