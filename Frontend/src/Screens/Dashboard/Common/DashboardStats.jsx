@@ -53,7 +53,7 @@ const DashboardStats = () => {
       >
         <Sidebar />
       </div>
-      <div className={`lg:hidden block cursor-pointer translate-x-60 pl-10 ${isOpen?"translate-x-60":"translate-x-30"} w-16`} ><SidebarS/></div>
+      <div className={`z-10 lg:hidden block cursor-pointer translate-x-60 pl-10 ${isOpen?"translate-x-60":"translate-x-30"} w-16`} ><SidebarS/></div>
       {/* Main content */}
       <div className="flex-1 p-4 lg:p-8 overflow-auto transition-all duration-300">
         <div className="flex justify-center">
@@ -86,7 +86,7 @@ const DashboardStats = () => {
         </section>
 
         {/* PATIENT DETAILS */}
-        <section className="mt-12">
+        <section className="mt-12 z-100">
           <h2 className="font-bold text-xl lg:text-3xl mb-4">PATIENT DETAILS</h2>
           <div className="shadow-2xl overflow-x-auto rounded-lg bg-white">
             <Table columns={columns} dataSource={patients} scroll={{ x: 800 }} />
