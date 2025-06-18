@@ -17,6 +17,8 @@ const reportRouter = require("./routes/Reports");
 
 const app = express()
 
+const port = process.env.PORT || 5001;
+
 app.use(express.json());
 app.use(cors());
 
@@ -37,7 +39,7 @@ app.use("/prescriptions", prescriptionRouter);
 app.use("/reports", reportRouter);
 
 
-app.listen(5001, async () => {
+app.listen(PORT, async () => {
     try {
       await dbConnect;
       console.log("Connected to DB");
@@ -45,5 +47,5 @@ app.listen(5001, async () => {
       console.log("Unable to connect to DB");
       console.log(error);
     }
-    console.log(`Listening at port ${5001}`);
+    console.log(`Listening at port ${PORT}`);
   });
