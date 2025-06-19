@@ -6,7 +6,7 @@ export const CreateReport = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.CREATE_REPORT_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/reports/create",
+      "https://clinintel-hospital-management-site.onrender.com/reports/create",
       data
     );
     console.log(res);
@@ -32,7 +32,7 @@ export const GetDoctorDetails = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_DOCTOR_REQUEST });
     const res = await axios.get(
-      "http://localhost:5001/doctors"
+      "https://clinintel-hospital-management-site.onrender.com/doctors"
     );
     console.log(res);
     // dispatch({
@@ -56,7 +56,7 @@ export const AddPatients = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.ADD_PATIENT_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/patients/register",
+      "https://clinintel-hospital-management-site.onrender.com/patients/register",
       data
     );
     console.log("response",data)
@@ -82,7 +82,7 @@ export const CreateBeds = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.ADD_BED_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/beds/add",
+      "https://clinintel-hospital-management-site.onrender.com/beds/add",
       data
     );
     return res.data;
@@ -107,7 +107,7 @@ export const CreatePayment = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.CREATE_PAYMENT_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/payments/add",
+      "https://clinintel-hospital-management-site.onrender.com/payments/add",
       data
     );
     console.log(res.data);
@@ -131,7 +131,7 @@ export const CreatePayment = (data) => async (dispatch) => {
 export const GetBeds = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_BED_REQUEST });
-    const res = await axios.get("http://localhost:5001/beds");
+    const res = await axios.get("https://clinintel-hospital-management-site.onrender.com/beds");
     console.log(res);
     dispatch({
       type: types.GET_BED_SUCCESS,
@@ -152,7 +152,7 @@ export const CreateBooking = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.CREATE_BOOKING_REQUEST });
     const res = await axios.post(
-      `http://localhost:5001/appointments/create`,
+      `https://clinintel-hospital-management-site.onrender.com/appointments/create`,
       data
     );
     console.log(res);
@@ -167,7 +167,7 @@ export const AddBed = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.ADD_BEDS_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/beds/add",
+      "https://clinintel-hospital-management-site.onrender.com/beds/add",
       data
     );
     console.log(res);
@@ -193,7 +193,7 @@ export const GetSingleBed = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_SINGLE_BEDS_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/beds/single",
+      "https://clinintel-hospital-management-site.onrender.com/beds/single",
       data
     );
     // console.log(res);
@@ -220,7 +220,7 @@ export const EditSingleBed = (data, id) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_SINGLE_BEDS_REQUEST });
     const res = await axios.patch(
-      `http://localhost:5001/beds/${id}`,
+      `https://clinintel-hospital-management-site.onrender.com/beds/${id}`,
       data
     );
     // console.log(res);
@@ -247,7 +247,7 @@ export const dischargePatient = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.DISCHARGE_PATIENT_REQUEST });
     const res = await axios.put(
-      `http://localhost:5001/beds/discharge`,
+      `https://clinintel-hospital-management-site.onrender.com/beds/discharge`,
       data
     );
     console.log(res);
@@ -274,7 +274,7 @@ export const GetPatients = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_PATIENT_REQUEST });
     const res = await axios.get(
-      `http://localhost:5001/patients`
+      `https://clinintel-hospital-management-site.onrender.com/patients`
     );
     console.log(res.data);
     dispatch({
@@ -291,7 +291,7 @@ export const GetAllData = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_ALLDATA_REQUEST });
     const res = await axios.get(
-      `http://localhost:5001/hospitals`
+      `https://clinintel-hospital-management-site.onrender.com/hospitals`
     );
     console.log(res.data);
     dispatch({
@@ -308,7 +308,7 @@ export const GetAllAppointment = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_APPOINTMENT_DETAILS_REQUEST });
     const res = await axios.get(
-      `http://localhost:5001/appointments`
+      `https://clinintel-hospital-management-site.onrender.com/appointments`
     );
     // console.log(res.data);
     // return res.data;
@@ -326,7 +326,7 @@ export const DeleteAppointment = (id) => async (dispatch) => {
   try {
     dispatch({ type: types.DELETE_APPOINTMENT_REQUEST });
     const res = await axios.delete(
-      `http://localhost:5001/appointments/${id}`
+      `https://clinintel-hospital-management-site.onrender.com/appointments/${id}`
     );
     console.log(res.data);
     // return res.data;
@@ -344,7 +344,7 @@ export const GetAllReports = () => async (dispatch) => {
   try {
     dispatch({ type: types.GET_REPORTS_REQUEST });
     const res = await axios.get(
-      `http://localhost:5001/reports`
+      `https://clinintel-hospital-management-site.onrender.com/reports`
     );
     // console.log(res.data);
     return res.data;

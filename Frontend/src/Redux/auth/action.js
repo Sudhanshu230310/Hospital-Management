@@ -6,7 +6,7 @@ export const NurseLogin = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.LOGIN_NURSE_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/nurses/login",
+      "https://clinintel-hospital-management-site.onrender.com/nurses/login",
       data
     );
     dispatch({
@@ -34,7 +34,7 @@ export const DoctorLogin = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.LOGIN_DOCTOR_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/doctors/login",
+      "https://clinintel-hospital-management-site.onrender.com/doctors/login",
       data
     );
     console.log(res.data);
@@ -62,7 +62,7 @@ export const AdminLogin = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.LOGIN_ADMIN_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/admin/login",
+      "https://clinintel-hospital-management-site.onrender.com/admin/login",
       data
     );
     console.log(res.data);
@@ -90,7 +90,7 @@ export const DoctorRegister = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.REGISTER_DOCTOR_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/doctors/register",
+      "https://clinintel-hospital-management-site.onrender.com/doctors/register",
       data
     );
     // console.log(res);
@@ -119,7 +119,7 @@ export const NurseRegister = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.REGISTER_NURSE_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/nurses/register",
+      "https://clinintel-hospital-management-site.onrender.com/nurses/register",
       data
     );
     // console.log(res);
@@ -148,7 +148,7 @@ export const AdminRegister = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.REGISTER_ADMIN_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/admin/register",
+      "https://clinintel-hospital-management-site.onrender.com/admin/register",
       data
     );
     // console.log(res);
@@ -177,7 +177,7 @@ export const AmbulanceRegister = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.REGISTER_AMBULANCE_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/ambulances/add",
+      "https://clinintel-hospital-management-site.onrender.com/ambulances/add",
       data
     );
     console.log(res);
@@ -216,7 +216,7 @@ export const UpdateNurse = (data, id) => async (dispatch) => {
   try {
     dispatch({ type: types.EDIT_NURSE_REQUEST });
     const res = await axios.patch(
-      `http://localhost:5001/nurses/${id}`,
+      `https://clinintel-hospital-management-site.onrender.com/nurses/${id}`,
       data
     );
     console.log(res);
@@ -231,7 +231,7 @@ export const UpdateDoctor = (data, id) => async (dispatch) => {
   try {
     dispatch({ type: types.EDIT_DOCTOR_REQUEST });
     const res = await axios.patch(
-      `http://localhost:5001/doctors/${id}`,
+      `https://clinintel-hospital-management-site.onrender.com/doctors/${id}`,
       data
     );
     console.log(res);
@@ -246,7 +246,7 @@ export const SendPassword = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.EDIT_DOCTOR_REQUEST });
     const res = await axios.post(
-      `http://localhost:5001/admin/password`,
+      `https://clinintel-hospital-management-site.onrender.com/admin/password`,
       data
     );
     // console.log(res);
@@ -261,7 +261,7 @@ export const forgetPassword = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.FORGET_PASSWORD_REQUEST });
     const res = await axios.post(
-      `http://localhost:5001/admin/forgot`,
+      `https://clinintel-hospital-management-site.onrender.com/admin/forgot`,
       data
     );
     // console.log(res);

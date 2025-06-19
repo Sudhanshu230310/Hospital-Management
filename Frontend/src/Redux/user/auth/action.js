@@ -6,7 +6,7 @@ export const authLogin = (data) => async (dispatch) => {
   try {
     dispatch({ type: types.LOGIN_USER_REQUEST });
     const res = await axios.post(
-      "http://localhost:5001/patients/login",
+      "https://clinintel-hospital-management-site.onrender.com/patients/login",
       data
     );
     console.log(res);
@@ -41,7 +41,7 @@ export const authLogout = () => async (dispatch) => {
 export const forgotPassword = (data) => async (dispatch) => {
   try {
     const res = await axios.post(
-      `http://localhost:5001/admin/forgot`,
+      `https://clinintel-hospital-management-site.onrender.com/admin/forgot`,
       data
     );
     return res.data;
