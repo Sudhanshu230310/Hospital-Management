@@ -169,6 +169,18 @@ const DLogin = () => {
               <div>
                 <h1 className='font-bold text-3xl md:text-4xl lg:text-5xl pt-3 lg:pt-5'>Health Care</h1>
               </div>
+
+              <div className='pt-2'>
+                <div className='flex gap-4'>
+                  <div>adminID: 1234</div><div>pass: 12345678</div>
+                </div>
+                <div className='flex gap-4 pt-2'>
+                  <div>nurseID: 1750350728472</div><div>pass: 123456</div>
+                </div>
+                <div className='flex gap-4 pt-2'>
+                  <div>docID: 1750350490977</div><div>pass: 123456</div>
+                </div>
+              </div>
               {/* <div className='mt-4 flex items-center justify-center'>
                 { <span className='font-bold text-sm md:text-base'>Temporary Credentials</span>
               </div>
